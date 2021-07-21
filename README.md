@@ -14,6 +14,10 @@ How to install:
 
 5.Add the databse name in the .env file
 
-6.Run php artisan migrate command
+6.Run php artisan key:generate to generate application key
 
-7.Run the php artisan serve command
+7.Run the php artisan migrate  to migrate tables to database
+
+8.Run the php artisan  db:seed  to seed the roles
+
+9.Run the php artisan serve command
