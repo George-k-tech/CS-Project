@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ Route::group(['middleware' => ['auth', 'role:user']], function(){
 
 // auth route for the admin only
 Route::group(['middleware' => ['auth', 'role:admin']], function(){
-    Route::get('/admin/index', 'App\Http\Controllers\AdminController@index')->name ('admin.index');
+    Route::resource('admin', AdminController::class);
 });
 
 require __DIR__.'/auth.php';
