@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FlutterwaveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,15 @@ Route::group(['middleware' => ['auth']], function(){
 //auth route for the users
 Route::group(['middleware' => ['auth', 'role:user']], function(){
     Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name ('dashboard.myprofile');
+});
+Route::group(['middleware' => ['auth', 'role:user']], function(){
+    Route::get('/dashboard/BuyTicket', 'App\Http\Controllers\TicketController@index')->name ('dashboard.index');
+    //Route::post('/payTicket', 'App\Http\Controllers\TicketController@pay')->name ('dashboard.pay');
+    // The route that the button calls to initialize payment
+    Route::post('/pay', [FlutterwaveController::class, 'initialize'])->name('pay');
+// The callback url after a payment
+    Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
+
 });
 
 // auth route for the admin only
