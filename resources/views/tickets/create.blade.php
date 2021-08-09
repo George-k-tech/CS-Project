@@ -11,7 +11,6 @@ Name: <input type="text" name="name"><br>
 Phone: <input type = "phone" name = "phone"> <br>
 E-mail: <input type="text" name="email"><br>
 Pieces of clothes : <input type ="number" name ="pieces" step ="1"> <br>
-
 <input type="submit">
 </form>
 

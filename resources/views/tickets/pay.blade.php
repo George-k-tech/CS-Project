@@ -8,13 +8,21 @@
 <form method="POST" action="{{ route('pay') }}" id="paymentForm">
 
 Name:{{ $data->name}} <br>
+
 Phone: {{ $data->phone}} <br>
+
 E-mail: {{ $data->email}}<br>
+
 Pieces of clothes : {{ $data->pieces}} <br>
+
 Total Amount: {{ $data->total}} 
-<br> 
-<a name="" id="" class="btn btn-primary" href="{{ route('pay') }}" role="button">Pay Now</a>
+
+<br>
+<a name="" id="" class="btn btn-primary" href="{{ route('pay') }}" role="button">Confirm Pay</a>
+<br>
 <a name="" id="" class="btn btn-primary" href="{{ route('dashboard.index') }}" role="button">Back</a>
+<br> 
+
 </form>
 
  </x-app-layout>

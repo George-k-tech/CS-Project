@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use KingFlamez\Rave\Facades\Rave as Flutterwave;
+use App\Models\Payment;
+use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
+use App\Http\Controllers\Controller;
+
+
 
 class FlutterwaveController extends Controller
 {
@@ -13,16 +19,18 @@ class FlutterwaveController extends Controller
      */
     public function initialize()
     {
+    
+        
         //This generates a payment reference
         $reference = Flutterwave::generateReference();
 
         // Enter the details of the payment
         $data = [
             'payment_options' => 'card,banktransfer',
-            'amount' => request()->pieces *100,
+            'amount' => request()->pieces *50,
             'email' => request()->email,
             'tx_ref' => $reference,
-            'currency' => "NGN",
+            'currency' => "KES",
             'redirect_url' => route('callback'),
             'customer' => [
                 'email' => request()->email,
@@ -35,6 +43,15 @@ class FlutterwaveController extends Controller
                 "description" => "20th October"
             ]
         ];
+
+        {{$data =(object)$data;}};
+        $payment = Payment::create([
+            'email' =>$data->email,
+            'tx_ref' =>$data->tx_ref,
+            'amount'=>$data->amount,
+        ]);
+
+        {{$data =(array)$data;}};
 
         $payment = Flutterwave::initializePayment($data);
 
@@ -60,16 +77,22 @@ class FlutterwaveController extends Controller
         if ($status ==  'successful') {
         
         $transactionID = Flutterwave::getTransactionIDFromCallback();
-        $data = Flutterwave::verifyTransaction($transactionID);
-
+        $data = Flutterwave::verifyTransaction($transactionID); 
+        
+        
+        //{{$data =(object)$data;}};
+        //return view('tickets.pay', compact('data'));
         dd($data);
+
         }
         elseif ($status ==  'cancelled'){
             //Put desired action/code after transaction has been cancelled here
         }
         else{
+
             //Put desired action/code after transaction has failed here
         }
+
         // Get the transaction from your DB using the transaction reference (txref)
         // Check if you have previously given value for the transaction. If you have, redirect to your successpage else, continue
         // Confirm that the currency on your db transaction is equal to the returned currency
