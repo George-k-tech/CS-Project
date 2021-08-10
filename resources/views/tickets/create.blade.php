@@ -47,7 +47,7 @@
 <div class="mt-4">
     <label class='block font-medium text-sm text-gray-700'>Pieces of clothes:</label> <input type="number" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name ="pieces" step ="1">
 </div>
-<x-button class="mt-4 ml-4 mr-4 ">
+<x-button class="mt-4 ml-4 mr-4">
                    Submit
                 </x-button>
         
