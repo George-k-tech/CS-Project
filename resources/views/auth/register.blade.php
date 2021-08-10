@@ -8,7 +8,7 @@
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
+    <body>
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -78,5 +78,6 @@
                 </x-button>
             </div>
         </form>
+    </body>
     </x-auth-card>
 </x-guest-layout>

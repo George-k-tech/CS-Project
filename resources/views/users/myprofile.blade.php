@@ -6,13 +6,7 @@
             {{ __('Dashboard for user') }}
         </h2>
     </x-slot>
-    <!--Display success flash message from laravel session flash 
-    @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        {{Session::get('success')}}
-                    </div>
-    @endif
-    -->
+    
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
