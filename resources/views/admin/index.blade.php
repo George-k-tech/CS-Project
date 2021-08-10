@@ -13,7 +13,7 @@
  <div class="panel panel-primary" style="margin:5%;">
  <br>
       <div class="panel-heading">
-	<a href="{{ route('admin.create') }}" data-toggle="modal" data-target="#addModal" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-plus"></i> Add New</a>
+	<a href="{{route('admin.create')}}" data-toggle="modal" data-target="#addModal" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-plus"></i> Add New</a>
       </div>
 	  <br>
       <div class="panel-body flex flex-col">
@@ -26,8 +26,8 @@
 	 			<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">S.N</th>
 	 			<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
 	 			<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-	 			<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">password</th>
-	 			<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+	 			<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">phone Number</th>
+	 			<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><br><br>Action</th>
 	 			</tr>
 	 		</thead>
 	 		<tbody class="bg-white divide-y divide-gray-200">
@@ -36,14 +36,12 @@
 	 			<td scope="col" class="px-6 py-3 text-sm text-black-500">{{ $loop->index+1 }}</td>
 	 			<td scope="col" class="px-6 py-3 text-sm text-black-500">{{ $user->name }}</td>
 	 			<td scope="col" class="px-6 py-3 text-sm text-black-500">{{ $user->email }}</td>
-	 			<td scope="col" class="px-6 py-3 text-sm text-black-500">{{ $user->password}}</td>
+	 			<td scope="col" class="px-6 py-3 text-sm text-black-500">{{ $user->phone}}</td>
 	 			<td>
 	 		<form  method="post" action="{{ route('admin.destroy',$user->id) }}" class="delete_form">
                 	        {{ csrf_field() }}
                 		{{ method_field('DELETE') }}
 						<td scope="col" class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><a href="{{ route('admin.edit',$user->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a></td>
-                		
-						<td scope="col" class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><a href="{{ route('admin.show',$user->id) }}" class="text-green-600 hover:text-green-900">View</a></td>
 
                         <td scope="col" class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><button class="bg-red-600 hover:bg-red-900 text-white font-bold py-2 px-4 rounded" type="submit" onclick="return confirm('Are You Sure? Want to Delete It.');">Delete</button></td>
                 	</form>
