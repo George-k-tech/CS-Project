@@ -22,15 +22,16 @@
                 <!-- Navigation link for the user profile -->
 
                 @if(Auth::user()->hasRole('user'))
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.myprofile')" :active="request()->routeIs('dashboard.myprofile')">
-                        {{ __('My Profile') }}
+               
+                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.index')" :active="request()->routeIs('dashboard.index')">
+                        {{ __('Buy Ticket') }}
                     </x-nav-link>
                 </div>
 
                  <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.index')" :active="request()->routeIs('dashboard.index')">
-                        {{ __('Buy Ticket') }}
+                    <x-nav-link :href="route('dashboard.myprofile')" :active="request()->routeIs('dashboard.myprofile')">
+                        {{ __('My Profile') }}
                     </x-nav-link>
                 </div>
                 @endif
@@ -41,6 +42,19 @@
                         {{ __('View users') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.index')" :active="request()->routeIs('dashboard.index')">
+                        {{ __('Buy Ticket') }}
+                    </x-nav-link>
+                </div>
+
+                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('view_pay')" :active="request()->routeIs('view_pay')">
+                        {{ __('View Payments') }}
+                    </x-nav-link>
+                </div>
+                
                 @endif 
 
 
