@@ -58,8 +58,6 @@ class AdminController extends Controller
         
         $user = User::find($id);
         return view('admin.read');
-
-
     }
 
     /**
