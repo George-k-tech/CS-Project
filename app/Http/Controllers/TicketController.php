@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Payment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TicketController extends Controller
 {
@@ -10,16 +11,10 @@ class TicketController extends Controller
 
         return view('tickets.create');
     }
-
-   /* public function pay(Request $request){
-        
-        $data = $request->input();
-        $data = (object)$data;
-        $data->total = $data->pieces *100;
-
-        return view('tickets.pay', compact('data'));
+ 
+    public function view_pay(){
+        $payments = Payment::paginate(10);
+        return view ('tickets.index', compact('payments'));
     }
-    */
-    
     
 }

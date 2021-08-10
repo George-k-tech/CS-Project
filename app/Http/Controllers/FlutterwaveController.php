@@ -82,7 +82,7 @@ class FlutterwaveController extends Controller
         
         //{{$data =(object)$data;}};
         //return view('tickets.pay', compact('data'));
-        dd($data);
+        //dd($data);
 
         }
         elseif ($status ==  'cancelled'){
@@ -93,6 +93,7 @@ class FlutterwaveController extends Controller
             //Put desired action/code after transaction has failed here
         }
 
+        return redirect()->route('dashboard.index')->with('success', 'payment done succefuly');
         // Get the transaction from your DB using the transaction reference (txref)
         // Check if you have previously given value for the transaction. If you have, redirect to your successpage else, continue
         // Confirm that the currency on your db transaction is equal to the returned currency
