@@ -81,6 +81,15 @@ Route::post('/reset-password', function (Request $request) {
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name ('dashboard');
 
+    Route::get('/dashboard/BuyTicket', 'App\Http\Controllers\TicketController@index')->name ('dashboard.index');
+
+
+    Route::post('/pay', [FlutterwaveController::class, 'initialize'])->name('pay');
+// The callback url after a payment
+    Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
+
+    Route::post('/webhook/flutterwave', [FlutterwaveController::class, 'webhook'])->name('webhook');
+
 });
 
 
@@ -89,19 +98,12 @@ Route::group(['middleware' => ['auth', 'role:user']], function(){
     Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name ('dashboard.myprofile');
 });
 Route::group(['middleware' => ['auth', 'role:user ']], function(){
-    Route::get('/dashboard/BuyTicket', 'App\Http\Controllers\TicketController@index')->name ('dashboard.index');
-    
-    // The route that the button calls to initialize payment
-    Route::post('/pay', [FlutterwaveController::class, 'initialize'])->name('pay');
-// The callback url after a payment
-    Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
-
+   
 });
 
 // auth route for the admin only
 Route::group(['middleware' => ['auth', 'role:admin']], function(){
     Route::resource('admin', AdminController::class);
-    Route::get('/dashboard/BuyTicket', 'App\Http\Controllers\TicketController@index')->name ('dashboard.index');
     Route::get('/dashboard/viewPayments', 'App\Http\Controllers\TicketController@view_pay')->name ('view_pay');
 });
 
