@@ -147,12 +147,16 @@
                     @else
                    
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-                    @if (Route::has('register'))
+
+                    @endauth
+        </div>
+         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                         @endif
                     @endauth
         </div>
                     @endif
+
                     <div class="container">
                     <div class="card">
                         <div class="content">
@@ -187,4 +191,4 @@
         </div>
                         
     </body>
-</html>
+    </html>
