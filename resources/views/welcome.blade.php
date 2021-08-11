@@ -168,25 +168,25 @@
         <div class="container">
             <div class="card">
                 <div class="content">
-                    <h2>GV LAUNDRY</h2>
-                    <h3>New GV Laundry App</h3>
-                    <p>Welcome to GV Laundry where we take care of your home laundry with the best services offered ranging from faster washing ,efficient cleaning ,packaging and online payment</p>
+                    <h2>FAST LAUNDRY</h2>
+                    <h3>New FAST Laundry App</h3>
+                    <p>Welcome to FAST Laundry where we take care of your home laundry with the best services offered ranging from faster washing ,efficient cleaning ,packaging and online payment</p>
                     <a href="#">Try out</a>
         </div>
         </div>
         <div class="card">
                 <div class="content">
-                    <h2>GV LAUNDRY</h2>
-                    <h3>New GV Laundry App</h3>
-                    <p>Welcome to GV Laundry where we take care of your home laundry with the best services offered ranging from faster washing ,efficient cleaning ,packaging and online payment</p>
+                    <h2>FAST PAYMENT</h2>
+                    <h3>Convinient Fast Payments</h3>
+                    <p>We offer fast and convinient methods of payments via phone or bankcard, and instant emails on the same</p>
                     <a href="#">Try out</a>
         </div>
         </div>
         <div class="card">
                 <div class="content">
-                    <h2>GV LAUNDRY</h2>
-                    <h3>New GV Laundry App</h3>
-                    <p>Welcome to GV Laundry where we take care of your home laundry with the best services offered ranging from faster washing ,efficient cleaning ,packaging and online payment</p>
+                    <h2>FAST UPDATES</h2>
+                    <h3>Convinient Updates</h3>
+                    <p>You will be updated on the offers, on payments of your laundry</p>
                     <a href="#">Try out</a>
         </div>
         </div>
