@@ -88,6 +88,8 @@ Route::group(['middleware' => ['auth']], function(){
 // The callback url after a payment
     Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
 
+    Route::post('/webhook/flutterwave', [FlutterwaveController::class, 'webhook'])->name('webhook');
+
 });
 
 
