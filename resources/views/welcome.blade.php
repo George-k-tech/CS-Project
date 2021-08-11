@@ -158,7 +158,8 @@
                         <div class="content">
                     <h2>GV LAUNDRY</h2>
                     <h3>New GV Laundry App</h3>
-                    <p>Have you been forced to compromise with laundry marts when being served due to their inefficiency,unaccountability,untransparency!!!Compromise no more as we bring you our new application that will suit and tailor your needs for delivery,washing,packaging and picking of laundry washables plus we keep contact with our customers as we value your participation for easier service delivery</p>
+                    <p>Have you been forced to compromise with laundry marts when being served due to their inefficiency,unaccountability,untransparency!!!
+                    Compromise no more as we bring you our new application that will suit and tailor your needs for delivery,washing,packaging and picking of laundry washables plus we keep contact with our customers as we value your participation for easier service delivery</p>
                     <a href="#">Try out</a>
         </div>
         </div>
