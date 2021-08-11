@@ -22,7 +22,9 @@ use Illuminate\Support\Str;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//profile image route update
+//Route::post('dashboard.profile','UserController@profile');
+//Route::post('dashboard.profile','UserController@updateAvatar');
 // the route for the users to change to reset their passwords
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
@@ -96,9 +98,13 @@ Route::group(['middleware' => ['auth']], function(){
 //auth route for the users
 Route::group(['middleware' => ['auth', 'role:user']], function(){
     Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name ('dashboard.myprofile');
-});
-Route::group(['middleware' => ['auth', 'role:user ']], function(){
+    //Route::post('dashboard/profile','UserController@profile');
+    //Route::post('/dashboard/profile','App\Http\Controllers\DashboardController@updateAvatar')->name('dashboard.myprofile');
    
+});
+//profile photo route
+Route::group(['middleware' => ['auth', 'role:user ']], function(){
+    
 });
 
 // auth route for the admin only
