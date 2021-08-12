@@ -1,13 +1,16 @@
 <?php
 
-use Illuminate\Auth\Events\PasswordReset;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FlutterwaveController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,12 +26,38 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// the route for the users to change to reset their passwords
+
+
+
+//auth route for both user and the admin
+Route::group(['middleware' => ['auth','verified']], function(){
+ Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name ('dashboard');
+
+
+ Route::get('/dashboard/BuyTicket', 'App\Http\Controllers\TicketController@index')->name ('dashboard.index');
+    
+    // The route that the button calls to initialize payment
+ Route::post('/pay', [FlutterwaveController::class, 'initialize'])->name('pay');
+// The callback url after a payment
+ Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
+
+//the route for emails notifications 
+Route::get('/email', function(){
+            Mail::to('info@gmail.com')->send(new WelcomeMail());
+            return redirect()->route('dashboard')->with('success', 'welcome Email sent');
+    });
+
+    //the route for notifications 
+Route::get('/send-testenrollment','App\Http\Controllers\TestEnrollmentController@sendTestNotification')->name('testenrollment');
+
+//auth route for the users
+Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name ('dashboard.myprofile');
+
+//password reset links
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
 })->middleware('guest')->name('password.request');
 
-//the route handles the form submission request from the forgot password view
 Route::post('/forgot-password', function (Request $request) {
     $request->validate(['email' => 'required|email']);
 
@@ -41,14 +70,12 @@ Route::post('/forgot-password', function (Request $request) {
                 : back()->withErrors(['email' => __($status)]);
 })->middleware('guest')->name('password.email');
 
-//route necessary to actually reset the password once the user clicks on the password
 
 Route::get('/reset-password/{token}', function ($token) {
     return view('auth.reset-password', ['token' => $token]);
 })->middleware('guest')->name('password.reset');
 
 
-//Route to actually handle the password reset form submission.
 Route::post('/reset-password', function (Request $request) {
     $request->validate([
         'token' => 'required',
@@ -77,31 +104,13 @@ Route::post('/reset-password', function (Request $request) {
 
 
 
-//auth route for both user and the admin
-Route::group(['middleware' => ['auth']], function(){
-    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name ('dashboard');
 
 });
 
-
-//auth route for the users
-Route::group(['middleware' => ['auth', 'role:user']], function(){
-    Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name ('dashboard.myprofile');
-});
-Route::group(['middleware' => ['auth', 'role:user ']], function(){
-    Route::get('/dashboard/BuyTicket', 'App\Http\Controllers\TicketController@index')->name ('dashboard.index');
-    
-    // The route that the button calls to initialize payment
-    Route::post('/pay', [FlutterwaveController::class, 'initialize'])->name('pay');
-// The callback url after a payment
-    Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
-
-});
 
 // auth route for the admin only
-Route::group(['middleware' => ['auth', 'role:admin']], function(){
+Route::group(['middleware' => ['auth','verified', 'role:admin']], function(){
     Route::resource('admin', AdminController::class);
-    Route::get('/dashboard/BuyTicket', 'App\Http\Controllers\TicketController@index')->name ('dashboard.index');
     Route::get('/dashboard/viewPayments', 'App\Http\Controllers\TicketController@view_pay')->name ('view_pay');
 });
 
