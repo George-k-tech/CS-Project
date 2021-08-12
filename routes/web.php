@@ -107,7 +107,6 @@ Route::post('/reset-password', function (Request $request) {
 
 });
 
-
 // auth route for the admin only
 Route::group(['middleware' => ['auth','verified', 'role:admin']], function(){
     Route::resource('admin', AdminController::class);
