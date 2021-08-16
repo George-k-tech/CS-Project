@@ -8,7 +8,7 @@
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
+    <body>
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -24,6 +24,13 @@
                 <x-label for="email" :value="__('Email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            </div>
+
+            <!-- Phone number -->
+            <div class="mt-4">
+                <x-label for="phone" :value="__('phone')" />
+
+                <x-input id="phone" class="block mt-1 w-full" type="phone" name="phone" :value="old('phone')" required />
             </div>
 
             <!-- Password -->
@@ -71,5 +78,6 @@
                 </x-button>
             </div>
         </form>
+    </body>
     </x-auth-card>
 </x-guest-layout>
