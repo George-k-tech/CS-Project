@@ -27,8 +27,6 @@ Route::get('/', function () {
 });
 
 
-
-
 //auth route for both user and the admin
 Route::group(['middleware' => ['auth','verified']], function(){
  Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name ('dashboard');
@@ -105,9 +103,6 @@ Route::post('/reset-password', function (Request $request) {
 
 
 
-
-
-});
 
 // auth route for the admin only
 Route::group(['middleware' => ['auth','verified', 'role:admin']], function(){

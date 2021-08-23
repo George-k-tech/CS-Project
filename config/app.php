@@ -175,6 +175,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //intervention image Laravel class
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -230,6 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Rave' => KingFlamez\Rave\Facades\Rave::class,
+        'Image' => Intervention\Image\Facades\Images::class,
 
     ],
 
