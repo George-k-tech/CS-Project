@@ -8,7 +8,15 @@ use Image;
 
 class DashboardController extends Controller
 {
+
+    public function _construct(){
+
+        $this->middleware(['auth', 'verified']);
+    }
+
+
     public function index(){
+
 
         if(Auth::user()->hasRole('admin')){
 
