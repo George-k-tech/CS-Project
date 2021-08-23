@@ -48,7 +48,9 @@ Route::get('/email', function(){
     });
 
     //the route for notifications 
-Route::get('/send-testenrollment','App\Http\Controllers\TestEnrollmentController@sendTestNotification')->name('testenrollment');
+Route::get('/notifiy','App\Http\Controllers\TestEnrollmentController@index')->name('notify');
+
+Route::post('/send-testenrollment','App\Http\Controllers\TestEnrollmentController@sendTestNotification')->name('testenrollment');
 
 //auth route for the users
 Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name ('dashboard.myprofile');

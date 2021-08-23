@@ -8,18 +8,28 @@ use App\Notifications\TestEnrollment;
 
 class TestEnrollmentController extends Controller
 {
+    public function index(){
+
+        return view('email.Notification');
+    }
     
     public function sendTestNotification()
     {
 
-            $user = User::first();
-        $enrollmentData = [
-            'body'=> 'you have received a new test notification',
-            'enrollmentText' => 'you are allowed to enroll',
-            'url' => url('/'),
-            'thankyou'=>'you have 14 days to enroll',
-        ];
+            $users = User::all();
+            foreach($users as $user){
 
-        $user->notify(new TestEnrollment($enrollmentData));
+                $enrollmentData = [
+                    'body'=> request()->welcome,
+                    'enrollmentText' => request()->notification,
+                    'url' => url('/'),
+                    'thankyou'=>request()->close,
+                ];
+        
+                $user->notify(new TestEnrollment($enrollmentData));
+
+            }
+        
+            return redirect()->route('notify')->with('success','users are notified');
     }
 }
