@@ -12,17 +12,24 @@
 
                 <!-- Navigation Links -->
 
-
+                
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-
+                
                 <!-- Navigation link for the user profile -->
 
                 @if(Auth::user()->hasRole('user'))
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+               
+                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.index')" :active="request()->routeIs('dashboard.index')">
+                        {{ __('Buy Ticket') }}
+                    </x-nav-link>
+                </div>
+
+                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard.myprofile')" :active="request()->routeIs('dashboard.myprofile')">
                         {{ __('My Profile') }}
                     </x-nav-link>
@@ -35,15 +42,38 @@
                         {{ __('View users') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.index')" :active="request()->routeIs('dashboard.index')">
+                        {{ __('Buy Ticket') }}
+                    </x-nav-link>
+                </div>
+
+                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('view_pay')" :active="request()->routeIs('view_pay')">
+                        {{ __('View Payments') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('notify')" :active="request()->routeIs('notify')">
+                        {{ __('Notification') }}
+                    </x-nav-link>
+                </div>
+                
                 @endif 
 
 
             </div>
 
             <!-- Settings Dropdown -->
+            
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="flex -space-x-2 overflow-hidden">
+  <img class="inline block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/> </div>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
+
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                             <div>{{ Auth::user()->name }}</div>
 
@@ -54,7 +84,7 @@
                             </div>
                         </button>
                     </x-slot>
-
+    
                     <x-slot name="content">
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -69,7 +99,6 @@
                     </x-slot>
                 </x-dropdown>
             </div>
-
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
@@ -83,6 +112,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
+    
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -90,13 +120,14 @@
             </x-responsive-nav-link>
         </div>
 
+
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
             </div>
-
+           
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
