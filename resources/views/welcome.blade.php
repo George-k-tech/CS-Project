@@ -147,7 +147,6 @@
                     @else
                    
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-
                     @endauth
         </div>
          @if (Route::has('register'))
@@ -164,22 +163,47 @@
                     <h3>New GV Laundry App</h3>
                     <p>Have you been forced to compromise with laundry marts when being served due to their inefficiency,unaccountability,untransparency!!!
                     Compromise no more as we bring you our new application that will suit and tailor your needs for delivery,washing,packaging and picking of laundry washables plus we keep contact with our customers as we value your participation for easier service delivery</p>
+=======
+                        
+                  
+                    
+                        
+                    @if (Route::has('register'))
+                   
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+    
+                        @endif
+                    @endauth
+                </div>
+        </nav>
+            @endif
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="container">
+            <div class="card">
+                <div class="content">
+                    <h2>FAST LAUNDRY</h2>
+                    <h3>New FAST Laundry App</h3>
+                    <p>Welcome to FAST Laundry where we take care of your home laundry with the best services offered ranging from faster washing ,efficient cleaning ,packaging and online payment</p>
                     <a href="#">Try out</a>
         </div>
         </div>
         <div class="card">
                 <div class="content">
-                    <h2>GV LAUNDRY</h2>
-                    <h3>New GV Laundry App with Online Payment</h3>
-                    <p>Feeling straunded and you don't know how the payment for your services should be carried out?No worries and ask no more as we have got you covered with our online payment package via Flutterwave now available on our one and only app!!! </p>
+                    <h2>FAST PAYMENT</h2>
+                    <h3>Convinient Fast Payments</h3>
+                    <p>We offer fast and convinient methods of payments via phone or bankcard, and instant emails on the same</p>
                     <a href="#">Try out</a>
         </div>
         </div>
         <div class="card">
                 <div class="content">
-                    <h2>GV LAUNDRY</h2>
-                    <h3>New GV Laundry App</h3>
-                    <p>Welcome to GV Laundry where we take care of your home laundry with the best services offered ranging from faster washing ,efficient cleaning ,packaging and online payment</p>
+                    <h2>FAST UPDATES</h2>
+                    <h3>Convinient Updates</h3>
+                    <p>You will be updated on the offers, on payments of your laundry</p>
                     <a href="#">Try out</a>
         </div>
         </div>
